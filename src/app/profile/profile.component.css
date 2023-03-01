@@ -1,0 +1,52 @@
+.card{
+    margin-top: 4px;
+}
+.row{
+    margin-top: 5%;
+    margin: 0 auto;
+}
+.btn{
+    margin-left: 15px;
+    margin-bottom: 15px;
+}
+.profile{
+    height: 30%;
+    width: 100%;
+    font-size: xx-large;
+    background-color: white;
+    color: black;
+    padding: 1%;
+}
+.btn{
+    background-color: #0000ff;
+    color: white;
+   
+}
+.card-image-top{
+    height: 10%;
+    width: 10%;
+
+}
+.btn2{
+    background-color: #0000ff;
+    color: white;
+    border-radius: 15px;
+    width: 120px;
+    font-size: large;
+    padding: 2px;
+    border: none;
+    margin-left: 75%;
+}
+.user-profile-body{
+    margin-left: 70%;
+    margin-top: -5%;
+    padding: 2%;
+}
+.container{
+    margin-left: 0%;
+    width: 70%;
+}
+.container-fluid{
+    margin-top: -5%;
+    padding: 2%;
+}

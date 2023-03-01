@@ -1,0 +1,240 @@
+<!-- <div class="main-content" >
+    <div class="table">
+        <div class="profile" >Profile
+            <button class="btn2" type="button" (click)="editProfile = !editProfile">
+                {{editProfile? 'Profile' : 'Cancel'}} Edit </button>
+        </div>
+    </div>
+    <div class="container mt-3">
+        <h3>Book Issued</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Sr.No</th>
+                    <th>Book Name</th>
+                    <th>Author Name</th>
+                    <th>Book Code</th>
+                    <th>Duration</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let book of bookissued; index as idx">
+                    <td>{{idx + 1}}</td>
+                    <td>{{book.name}}</td>
+                    <td>{{book.author}}</td>
+                    <td>{{book.code}}</td>
+                    <td>{{book.issuedate}} to {{book.lastdate}}</td>
+                </tr>
+            </tbody> 
+        </table>
+    </div>
+    <div class="user-profile-body">
+        <div class="card mb-3 mt-1 ml-70% " *ngFor="let info of profiledata">
+            <img src="/src/app/admin/pexels-michael-pointner-11128710.jpg" class="img-fluid" alt="Responsive image">
+            <div class="card-body">
+              <h5 class="card-title">{{info.firstname}} {{info.lastname}}</h5>
+              <p class="card-text">{{info.aboutme}}</p>
+              <p class="card-text"><small class="text-muted">{{info.username}}</small></p>
+            </div>
+          </div>
+    </div> 
+    <div class="container-fluid" *ngIf="!editProfile">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card" >
+                    <div class="header">
+                        <h4 class="title">Edit Profile</h4>
+                    </div>
+                    <div class="content">
+                        <form [formGroup]="profileForm" (ngSubmit)="updateProfile()">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Username</label>
+                                        <input type="text" class="form-control" placeholder="Username" value="rikkbb" formControlName="username">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Email address</label>
+                                        <input type="email" class="form-control" placeholder="Email" value="rikkbb@gmail.com" formControlName="email">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>First Name</label>
+                                        <input type="text" class="form-control" placeholder="Company" value="Ritik" formControlName="firstname">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Last Name</label>
+                                        <input type="text" class="form-control" placeholder="Last Name" value="Badoni" formControlName="lastname">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Address</label>
+                                        <input type="text" class="form-control" placeholder="Home Address" value="block-4, ishmeet chownk, Model town" formControlName="address">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>City</label>
+                                        <input type="text" class="form-control" placeholder="City" value="Ludhiana" formControlName="city">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>State</label>
+                                        <input type="text" class="form-control" placeholder="Country" value="Punjab" formControlName="state">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Postal Code</label>
+                                        <input type="number" class="form-control" placeholder="ZIP Code" value="141001" formControlName="pincode">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>About Me</label>
+                                        <textarea rows="5" class="form-control" placeholder="Here can be your description" value="Mike" formControlName="aboutme">Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</textarea>
+                                    </div>
+                                </div>
+                            </div><br>
+                            <button type="submit" class= "btn" >Update Profile</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="form-container mat-elevation-z5 text-centre"  *ngif = "user$ | async as user">
+                <h1>User Profile</h1>
+                <div class="img" style="height: 120px;">
+                    <img  src="user.imageURL">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>-->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+    Launch demo modal
+  </button>
+  
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Add Book</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="container-fluid" *ngIf="!editProfile">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="" >
+                            <div class="content">
+                                <form [formGroup]="profileForm" (ngSubmit)="updateProfile()">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Username</label>
+                                                <input type="text" class="form-control" placeholder="Username" value="rikkbb" formControlName="username">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Email address</label>
+                                                <input type="email" class="form-control" placeholder="Email" value="rikkbb@gmail.com" formControlName="email">
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>First Name</label>
+                                                <input type="text" class="form-control" placeholder="Company" value="Ritik" formControlName="firstname">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Last Name</label>
+                                                <input type="text" class="form-control" placeholder="Last Name" value="Badoni" formControlName="lastname">
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Address</label>
+                                                <input type="text" class="form-control" placeholder="Home Address" value="block-4, ishmeet chownk, Model town" formControlName="address">
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>City</label>
+                                                <input type="text" class="form-control" placeholder="City" value="Ludhiana" formControlName="city">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>State</label>
+                                                <input type="text" class="form-control" placeholder="Country" value="Punjab" formControlName="state">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Postal Code</label>
+                                                <input type="number" class="form-control" placeholder="ZIP Code" value="141001" formControlName="pincode">
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>About Me</label>
+                                                <textarea rows="5" class="form-control" placeholder="Here can be your description" value="Mike" formControlName="aboutme">Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</textarea>
+                                            </div>
+                                        </div>
+                                    </div><br>
+                                    <button type="submit" class= "btn" >Update Profile</button>
+                                    <div class="clearfix"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-container mat-elevation-z5 text-centre"  *ngif = "user$ | async as user">
+                        <h1>User Profile</h1>
+                        <div class="img" style="height: 120px;">
+                            <img  src="user.imageURL">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" >Do Something</button>
+        </div> -->
+      </div>
+    </div>
+  </div> 
