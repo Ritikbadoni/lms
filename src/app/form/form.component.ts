@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
-import { getFirestore,getDocs, collection, addDoc, setDoc, doc, Timestamp, deleteDoc} from '@firebase/firestore/lite';
+import { getFirestore,getDocs , collection, addDoc, setDoc, doc, Timestamp, deleteDoc} from '@firebase/firestore/lite';
 import { getStorage, ref, uploadBytes } from '@firebase/storage';
 import { DBService } from '../db.service';
 import { getDownloadURL } from '@angular/fire/storage';
@@ -14,6 +14,7 @@ import { documentId } from '@firebase/firestore';
 import { Observable } from 'rxjs';
 import { User } from '@angular/fire/auth';
 import { DatePipe } from '@angular/common';
+import { Storage } from '@angular/fire/storage';
 
 
 
@@ -36,7 +37,7 @@ export class FormComponent implements OnInit {
       available :new FormControl(false),
       notavailable :new FormControl(false),
       imageURL: new FormControl(''),
-      id : new FormControl(''),
+      bookId : new FormControl(''),
     }
   );
 
@@ -46,28 +47,66 @@ export class FormComponent implements OnInit {
   value: any;
   addbook :boolean = true;
   text = "Add Book";
-  update: any;
-  id : string | undefined ;
+  id : string | null = "";
+  tempImage: any = null;
   
 
 
   
 
-  constructor(private firestore : AngularFirestore, private db : DBService,private route : ActivatedRoute) {
+  constructor(private storage : Storage , private firestore : Firestore, private db : DBService,private route : ActivatedRoute) {
     this.bookData();
   }
     
 
-  addBook(){
+  async addBook(){
+    console.log("function executed");
+    let value : any = {...this.bookForm.value};
+    
+    if(this.bookForm.invalid){
+      this.bookForm.markAllAsTouched();
+      return;
+    }
 
-    const firestoreDB = getFirestore(this.db.app);
-    const documentToWrite = doc(collection(firestoreDB, 'Books'));
-    const bookData = this.bookForm.value;
-    console.log("Adding Book with Data:");
-    console.log(bookData);
+    let bookInfo = {
+      bookId :value.bookId.length === 0? doc(collection(this.firestore, "Books")).id :value.bookId,
+      name : value.name,
+      author : value.author,
+      genre : value.genre,
+      price : value.price,
+      available : value.available,
+      notavailable : value.notavailable,
+      imageURL : value.imageURL,
+      image : value.image,
+    }
+
+    if(this.tempImage != null){
+      let strorageRef = ref(this.storage , "Books/" + this.tempImage.name)
+      await uploadBytes(strorageRef, this.tempImage);
+      bookInfo.image = await getDownloadURL(strorageRef);
+      alert (bookInfo.image);
+      
+    }
+
+    let docRef = doc(this.firestore , "Books/" + bookInfo.bookId);
+    setDoc (docRef, bookInfo)
+    .then(() => {
+      alert("saved");
+      this.bookForm.reset({});
+    },(error) => {
+      console.log(error);
+      
+    })
+
+    // const firestoreDB = getFirestore(this.db.app);
+    // const documentToWrite = doc(collection(firestoreDB, 'Books'));
+    // const bookData = this.bookForm.value;
+    // console.log("Adding Book with Data:");
+    // console.log(bookData);
+    // this.bookForm.reset({});
     
     
-    setDoc(documentToWrite, bookData);
+    // setDoc(documentToWrite, bookData);
 
   }
 
@@ -84,11 +123,18 @@ export class FormComponent implements OnInit {
 
   }
 
-   async deleteBook(id : any){
-    const firestoreDB = getFirestore(this.db.app);
-    const userCollection = collection(firestoreDB, 'Books');
-    const snapshots = await getDocs(userCollection);
-    
+   async deleteBook(bookId : string){
+    // const firestoreDB = getFirestore(this.db.app);
+    // const userCollection = collection(firestoreDB, 'Books');
+    // const snapshots = await getDocs(userCollection);
+    let docRef = doc (this.firestore, "Books/" + bookId);
+    deleteDoc(docRef).then(()=>{
+      console.log("deleted successfully");
+    })
+    .catch((error) =>{
+      console.log(error);
+      
+    })
     
   }
 
@@ -99,14 +145,17 @@ export class FormComponent implements OnInit {
   updateBook(data : any){
     this.text= "Update Book"
     let datepipe = new DatePipe('en-US');
-    // this.bookForm = new FormGroup({
-    //   name : new FormControl(data.name),
-    //   author : new FormControl(data.author),
-    //   genre : new FormControl(data.genre),
-    //   price : new FormControl(data.price),
-    //   available : new FormControl(data.available),
-    //   notavailable : new FormControl(data.notavailable),
-    // });
+    this.bookForm = new FormGroup({
+      bookId : new FormControl(data.bookId),
+      name : new FormControl(data.name),
+      image : new FormControl(data.image),
+      author : new FormControl(data.author),
+      genre : new FormControl(data.genre),
+      price : new FormControl(data.price),
+      available : new FormControl(data.available),
+      notavailable : new FormControl(data.notavailable),
+      imageURL : new FormControl(data.imageURL),
+    });
     
   }
 
@@ -158,8 +207,6 @@ export class FormComponent implements OnInit {
   }
  
 
-upDate(){
-  this.addbook = false;
-}
+
 
 }

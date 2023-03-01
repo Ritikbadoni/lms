@@ -34,8 +34,8 @@
               <!-- <td><a routerLink="/manage-book" [queryParams] ="{action: 'delete'}" >Delete</a></td>
               <td><a routerLink="/manage-book" [queryParams] ="{action: 'update'}" data-bs-toggle="modal" data-bs-target="exampleModal">Update</a></td> -->
               <td>
-                <button class="btn btn-danger" type="button" (click)="deleteBook(1)" >Delete</button>
-                <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="updateBook(1)">Update</button>
+                <button class="btn btn-danger" type="button" (click)="deleteBook(info.id)" >Delete</button>
+                <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="updateBook(info)">Update</button>
               </td>
           </tr>
       </tbody> 
