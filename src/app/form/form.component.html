@@ -21,6 +21,7 @@
               <th>Genre</th>
               <th>Price</th>
               <th>Availbilty</th>
+              
           </tr>
       </thead>
       <tbody>
@@ -31,11 +32,9 @@
               <td>{{info.genre}}</td>
               <td>{{info.price}}</td>
               <td>{{info.available}}</td>
-              <!-- <td><a routerLink="/manage-book" [queryParams] ="{action: 'delete'}" >Delete</a></td>
-              <td><a routerLink="/manage-book" [queryParams] ="{action: 'update'}" data-bs-toggle="modal" data-bs-target="exampleModal">Update</a></td> -->
               <td>
-                <button class="btn btn-danger" type="button" (click)="deleteBook(info.id)" >Delete</button>
-                <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="updateBook(info)">Update</button>
+                <button class="btn btn-danger" type="button" routerLink="manage-book" (click)="deleteBook(info.docId)" >Delete</button>
+                <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="updateBook(info.docId, idx)">Update</button>
               </td>
           </tr>
       </tbody> 
