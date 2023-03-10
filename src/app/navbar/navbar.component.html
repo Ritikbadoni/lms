@@ -1,3 +1,4 @@
+<div>
 <div class="nav-body" >
   <div class="nav-logo">
     <h3><a class="home" routerLink="home">logo</a></h3>
@@ -17,3 +18,21 @@
   </div>
 </div>
 
+<aside class="bd-sidebar">
+  <div class="offcanvas-lg offcanvas-start" tabindex="1" id="bd-sidebar" aria-labelledby="bdSidebarOffcanvasLabel">
+    <div class="offcanvas-header border-bottom">
+      <h5 class="offcanvas-title" id="bdSidebarOffcanvasLabel">Dashboard</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdSidebar"></button>
+    </div>
+    <div class="offcanvas-body">
+      <nav class="nav-items" id="navitems" aria-label="">
+        <ul>
+          <li><a class="side-b" routerLink="home">Home</a></li>
+          <li><a class="side-b" routerLink="manage-book">Book Manage</a></li>
+          <li><a class="side-b" routerLink="staff-manage">Staff Manage</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</aside>
+</div>
