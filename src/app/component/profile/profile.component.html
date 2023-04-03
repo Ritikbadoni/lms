@@ -1,0 +1,110 @@
+<app-navbar></app-navbar>
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+    Launch demo modal
+  </button>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Add Book</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="container-fluid" *ngIf="!editProfile">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="" >
+                            <div class="content">
+                                <form [formGroup]="profileForm" (ngSubmit)="updateProfile()">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Username</label>
+                                                <input type="text" class="form-control" placeholder="Username" value="rikkbb" formControlName="username">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Email address</label>
+                                                <input type="email" class="form-control" placeholder="Email" value="rikkbb@gmail.com" formControlName="email">
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>First Name</label>
+                                                <input type="text" class="form-control" placeholder="Company" value="Ritik" formControlName="firstname">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Last Name</label>
+                                                <input type="text" class="form-control" placeholder="Last Name" value="Badoni" formControlName="lastname">
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Address</label>
+                                                <input type="text" class="form-control" placeholder="Home Address" value="block-4, ishmeet chownk, Model town" formControlName="address">
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>City</label>
+                                                <input type="text" class="form-control" placeholder="City" value="Ludhiana" formControlName="city">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>State</label>
+                                                <input type="text" class="form-control" placeholder="Country" value="Punjab" formControlName="state">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Postal Code</label>
+                                                <input type="number" class="form-control" placeholder="ZIP Code" value="141001" formControlName="pincode">
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>About Me</label>
+                                                <textarea rows="5" class="form-control" placeholder="Here can be your description" value="Mike" formControlName="aboutme">Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</textarea>
+                                            </div>
+                                        </div>
+                                    </div><br>
+                                    <button type="submit" class= "btn" >Update Profile</button>
+                                    <div class="clearfix"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-container mat-elevation-z5 text-centre"  *ngif = "user$ | async as user">
+                        <h1>User Profile</h1>
+                        <div class="img" style="height: 120px;">
+                            <img  src="user.imageURL">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" >Do Something</button>
+        </div> -->
+      </div>
+    </div>
+  </div> 

@@ -1,0 +1,42 @@
+/* .main-content{
+    background: linear-gradient(90deg, hsla(235, 100%, 78%, 1) 0%, hsla(212, 61%, 17%, 1) 100%);
+    height: 661px;
+}
+
+.card{
+    margin-top: 200px;
+    margin-left: 60%;
+    width: 400px;
+    height: 400px;
+    
+}
+.col{
+    margin: 5px,auto;
+    
+}
+.h2{
+    margin-top: 5%;
+    color: hsla(212, 61%, 17%, 1);
+    font-family: sans-serif
+}
+.btn{
+    background: hsla(212, 61%, 17%, 1);
+    color: white;
+    font-family: sans-serif;
+    margin-top: 40px;
+    align-items: center;
+    margin-left: 40%;
+}
+.signin{
+    text-decoration: none;
+    text-align: center;
+    font-size: medium;
+    margin-top: 2px;
+}
+.signin2{
+    color: hsla(235, 100%, 78%, 1) ;
+    text-decoration: none;
+}
+.alert{
+
+} */

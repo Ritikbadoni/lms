@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg shadow-sm sticky-top" style="background-color:white" >
+  <div class="container-fluid">
+    <a class="navbar-brand" style="color:#6818a5" href="#"><i class="bi bi-book-half fs-1" ></i></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" routerLink="/home" routerLinkActive="">
+      <span class="navbar-toggler-icon" routerLink="/home"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" style="font-size: larger; color:#6818a5;" routerLink="/home" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" style="font-size: larger; color:#6818a5;" routerLink="/manage-book"  href="#">Manage Book</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" style="font-size: larger; color:#6818a5;" routerLink="/profile" href="#">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" style="font-size: larger; color:#6818a5;" routerLink="/admin" href="#">Admin</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle fw-semibold" style="font-size: larger; color:#6818a5;"   href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Membership Plans
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Silver</a></li>
+            <li><a class="dropdown-item" href="#">Gold</a></li>
+            <li><a class="dropdown-item" href="#">Platinum</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-none text-white me-3" style="background-color: #9d4edd;" type="submit">Search</button>
+      </form>
+      <button type="button" class="btn btn-outline-none me-3 mb-3" style="height: 50px; width:50px; color:#6818a5; justify-content:center" (click)="signOut()"><i class="bi bi-box-arrow-right" style="font-size:xx-large; justify-content:center"></i></button>
+    </div>
+  </div>
+</nav>
